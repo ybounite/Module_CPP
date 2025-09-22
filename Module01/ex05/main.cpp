@@ -14,5 +14,11 @@
 
 int	main()
 {
+	Harl	Harl1;
+
+	Harl1.complain( "debug" );
+	Harl1.complain( "info" );
+	Harl1.complain( "warning" );
+	Harl1.complain("error");
 	return 0;
 }
