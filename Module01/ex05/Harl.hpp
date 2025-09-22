@@ -27,24 +27,18 @@ class Harl {
 
 public:
 
-	Harl( std::string Filename, std::string S1, std::string S2 );
+	Harl( void );
 	~Harl( void );
+
+	void		complain( std::string level );
+
+private:
 
 	void		debug( void );
 	void		info( void );
 	void		warning( void );
 	void		error( void );
 
-	void		complain( std::string level );
-	//
-	std::string	getFilename( void );
-	bool		process( void );
-	bool		isValidString( void );
-
-private:
-	std::string	_Filename;
-	std::string	_S1;
-	std::string	_S2;
 };
 
 #endif
