@@ -30,7 +30,7 @@ void		Harl::error( void )
 
 void		Harl::complain( std::string level )
 {
-	std::string	levels[] = { "debug", "info", "warning", "error" };
+	std::string	levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 	// Define an array of pointers to member functions
 	void (Harl::*FunPtr[])() = {
 		&Harl::debug,
