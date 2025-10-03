@@ -1,8 +1,16 @@
 NAME = VIOLENCE
 
+RESET		=	\033[0m
+GREEN		=	\033[32m
+YELLOW		=	\033[33m
+BLUE		=	\033[34m
+RED		=	\033[31m
+UP		=	\033[A
+CUT		=	\033[K
+
 CXX = c++
 FLAGS =	-Wall -Wextra -Werror -std=c++98
-RM =  rm -r
+RM =  rm -rf
 
 SRC = main.cpp \
       HumanA.cpp \
@@ -12,7 +20,6 @@ SRC = main.cpp \
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -20,7 +27,11 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o : %.cpp
 	@mkdir -p $(OBJ_DIR)
-	$(CXX) $(FLAGS) -c $< -o $@ 
+	@echo "$(YELLOW)Compiling [$@]...$(RESET)"
+	@$(CXX) $(FLAGS) -o $@ -c $<
+	@printf "$(UP)$(CUT)"
+	@echo "$(GREEN)Finished [$@]$(RESET)"
+	@printf "$(UP)$(CUT)"
 
 clean:
 	$(RM) $(OBJ_DIR)
