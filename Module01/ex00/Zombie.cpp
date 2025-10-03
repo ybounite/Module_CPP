@@ -12,15 +12,17 @@
 
 # include "Zombie.hpp"
 
-Zombie::Zombie( std::string name )
-	: _name(name) {}
+Zombie::Zombie( std::string name ) : _name(name)
+{
+	std::cout << "Zombie object " << this->_name << " created" << std::endl;
+}
 
 Zombie::~Zombie( void )
 {
-	std::cout << _name << " is destroyed 💀" << std::endl;
+	std::cout << this->_name << " is destroyed 💀" << std::endl;
 }
 
 void	Zombie::announce( void )
 {
-	std::cout <<  Zombie::_name << ": BraiiiiiiinnnzzzZ...\n";
+	std::cout <<  this->_name << ": BraiiiiiiinnnzzzZ...\n";
 }
