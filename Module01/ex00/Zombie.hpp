@@ -12,9 +12,6 @@
 
 #pragma once
 
-# ifndef __ZOMBIE_H__
-# define __ZOMBIE_H__
-
 # include <iostream>
 # include <string>
 // ************************************************************************** //
@@ -38,5 +35,3 @@ private:
 
 Zombie		*newZombie( std::string name );
 void		randomChump( std::string name );
-
-#endif
