@@ -1,5 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/04 14:30:37 by ybounite          #+#    #+#             */
+/*   Updated: 2025/10/04 14:30:38 by ybounite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Harl.hpp"
+
+enTypeLevel getTypeLevel( std::string level)
+{
+		if ( level == "DEBUG")
+			return enDebug;
+		else if ( level == "INFO")
+			  return enInfo;
+		else if ( level == "WARNIG")
+			return enWarning;
+		else if ( level == "ERROR")
+			return enError;
+		else
+			return enUnknown;
+}
 
 int	main(int arc, char **arv)
 {
