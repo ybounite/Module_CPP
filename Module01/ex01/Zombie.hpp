@@ -12,14 +12,12 @@
 
 #pragma once
 
-# ifndef __ZOMBIE_H__
-# define __ZOMBIE_H__
-
 # include <iostream>
 # include <string>
 // ************************************************************************** //
 //                               Zombie Class                                 //
 // ************************************************************************** //
+
 
 class Zombie {
 
@@ -34,11 +32,9 @@ public:
 	std::string	getName( void );
 
 private:
-
 	std::string	_name;
 };
 
 Zombie		*newZombie( std::string name );
 Zombie*		zombieHorde( int N, std::string name );
 
-#endif
