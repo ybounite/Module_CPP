@@ -12,9 +12,6 @@
 
 #pragma once
 
-# ifndef __REPLACE_H__
-# define __REPLACE_H__
-
 # include <iostream>
 # include <string>
 # include <fstream>
@@ -40,4 +37,3 @@ private:
 	std::string	_S2;
 };
 
-#endif
