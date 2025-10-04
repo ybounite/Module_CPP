@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:30:05 by ybounite          #+#    #+#             */
-/*   Updated: 2025/09/11 16:52:09 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/10/04 14:56:58 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ class Zombie {
 public:
 
 	Zombie( void );
-	Zombie( std::string name );
 	~Zombie( void );
 
 	void		announce( void );
+	void		setName( std::string name );
 	std::string	getName( void );
 
 private:
