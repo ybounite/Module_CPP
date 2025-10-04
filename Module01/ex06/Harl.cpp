@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/04 14:30:43 by ybounite          #+#    #+#             */
+/*   Updated: 2025/10/04 14:30:57 by ybounite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Harl.hpp"
 
@@ -47,13 +58,10 @@ void		Harl::complain( std::string level )
 	{
 		case enDebug:
 			(this->*FunPtr[enDebug])();
-			// fall through
 		case enInfo:
 			(this->*FunPtr[enInfo])();
-			// fall through
 		case enWarning:
 			(this->*FunPtr[enWarning])();
-			// fall through
 		case enError:
 			(this->*FunPtr[enError])();
 			break ;
@@ -62,16 +70,3 @@ void		Harl::complain( std::string level )
 	}
 }
 
-enTypeLevel getTypeLevel( std::string level)
-{
-		if ( level == "DEBUG")
-			return enDebug;
-		else if ( level == "INFO")
-			  return enInfo;
-		else if ( level == "WARNIG")
-			return enWarning;
-		else if ( level == "ERROR")
-			return enError;
-		else
-			return enUnknown;
-}
