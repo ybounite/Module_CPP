@@ -12,9 +12,6 @@
 
 #pragma once
 
-# ifndef __HumanA_H__
-# define __HumanA_H__
-
 # include <iostream>
 # include <string>
 # include "Weapon.hpp"
@@ -41,4 +38,3 @@ private:
 	Weapon		&_weapon;
 };
 
-#endif
