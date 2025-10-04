@@ -1,7 +1,16 @@
-#pragma once
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/04 09:19:57 by ybounite          #+#    #+#             */
+/*   Updated: 2025/10/04 09:20:17 by ybounite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# ifndef __HARL_H__
-# define __HARL_H__
+#pragma once
 
 # include <iostream>
 # include <string>
@@ -40,4 +49,3 @@ enum enTypeLevel{
 
 enTypeLevel getTypeLevel( std::string );
 
-#endif
