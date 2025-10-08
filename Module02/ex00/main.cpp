@@ -24,8 +24,7 @@ int main( void ) {
 	std::cout << c.getRawBits() << std::endl;
 	/*
 	 * copy constructor
-	 * b = a and b( a )
-	
+	 * b = a and b( a )	
 	 * copy assigment operator
 	 * b = a and b.operator=(a)
 	*/

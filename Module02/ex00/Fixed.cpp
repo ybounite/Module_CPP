@@ -37,13 +37,13 @@ Fixed::~Fixed( void )
 {
 	std::cout << "Destructor called" << std::endl;
 }
-// getter 
+
 int		Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called\n";
 	return _value;
 }
-// setter
+
 void	Fixed::setRawBits( int const raw )
 {
 	this->_value = raw;
