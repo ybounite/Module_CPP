@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:09:23 by ybounite          #+#    #+#             */
-/*   Updated: 2025/10/09 09:57:01 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/10/09 09:58:22 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Fixed::Fixed( const Fixed &other ) {
 	std::cout << "Copy constructor called" << std::endl;
 	this->_value = other._value;
 }
-// copy assignment 
+// copy assignment operator 
 Fixed & Fixed::operator=( const Fixed &Other ) {
 	std::cout << "Copy assignment operator calle" << std::endl;
 	this->_value = Other.getRawBits();
