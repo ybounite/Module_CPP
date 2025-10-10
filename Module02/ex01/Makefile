@@ -4,13 +4,13 @@ CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRC = main.cpp\
-	  Fixed.cpp
+SRC =  main.cpp\
+       Fixed.cpp
 
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(FLAGS) -o $(NAME) $(OBJ)
