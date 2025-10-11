@@ -40,12 +40,12 @@ public:
 	int	toInt( void ) const;
 
 	// member function comparison operators: >, <, >=, <=, == and !=.
-	bool	operator==( const Fixed &Other );
-	bool	operator!=( const Fixed &Other );
-	bool	operator<=( const Fixed &Other );
-	bool	operator>=( const Fixed &Other );
+	bool	operator==( const Fixed &Other ) const;
+	bool	operator!=( const Fixed &Other ) const;
+	bool	operator<=( const Fixed &Other ) const;
+	bool	operator>=( const Fixed &Other ) const;
 	bool	operator<( const Fixed &Other ) const;
-
+	bool	operator>( const Fixed &Other ) const;
 	// member arithmetic operators
 	
 	Fixed	operator+( const Fixed &Other );
