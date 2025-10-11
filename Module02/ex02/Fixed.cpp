@@ -6,7 +6,7 @@
 /*   By: ybounite <ybounite@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:18:08 by ybounite          #+#    #+#             */
-/*   Updated: 2025/10/10 11:50:26 by ybounite         ###   ########.fr       */
+/*   Updated: 2025/10/11 12:00:23 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ Fixed::Fixed( const float value ) {
 }
 
 Fixed::Fixed( const Fixed &Other ) {
-	std::cout << "copy constructor called" << std::endl;	
 	this->_value = Other._value;
 }
 
 Fixed & Fixed::operator=( const Fixed &Other ) {
-	std::cout << "copy operator assignment called" << std::endl;
 	this->_value = Other._value;
 	return *this;
 }
@@ -51,11 +49,12 @@ int	Fixed::toInt( void ) const{
 }
 
 // member function comparison operators: >, <, >=, <=, == and !=.
-bool	Fixed::operator==( const Fixed &Other ) { return this->toFloat() == Other.toFloat(); }
-bool	Fixed::operator!=( const Fixed &Other ) { return this->toFloat() != Other.toFloat(); }
-bool	Fixed::operator<=( const Fixed &Other ) { return this->toFloat() <= Other.toFloat(); }
-bool	Fixed::operator>=( const Fixed &Other ) { return this->toFloat() >= Other.toFloat(); }
+bool	Fixed::operator==( const Fixed &Other ) const { return this->toFloat() == Other.toFloat(); }
+bool	Fixed::operator!=( const Fixed &Other ) const { return this->toFloat() != Other.toFloat(); }
+bool	Fixed::operator<=( const Fixed &Other ) const { return this->toFloat() <= Other.toFloat(); }
+bool	Fixed::operator>=( const Fixed &Other ) const { return this->toFloat() >= Other.toFloat(); }
 bool	Fixed::operator<( const Fixed &Other ) const { return this->toFloat() < Other.toFloat(); }
+bool	Fixed::operator>( const Fixed &Other ) const { return this->toFloat() > Other.toFloat(); }
 
 // arithmetic operators
 Fixed	Fixed::operator+( const Fixed &Other ) {
