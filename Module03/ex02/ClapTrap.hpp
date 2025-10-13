@@ -34,8 +34,8 @@ public:
 	void beRepaired( unsigned int amount );
 	std::string	getName( void ) const;
 
-private:
-	
+protected:
+
 	std::string	_Name;
 	int		_HitPoints;
 	int		_EnergyPoints;
