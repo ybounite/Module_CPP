@@ -22,7 +22,7 @@ ScavTrap::ScavTrap( void ) {
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap( name ){
 
-	std::cout << "ScavTrap constructor called" << std::endl;
+	std::cout << "ScavTrap " << getName() << " is created" << std::endl;
 }
 
 ScavTrap::ScavTrap( const ScavTrap &Other ) : ClapTrap( Other ){
