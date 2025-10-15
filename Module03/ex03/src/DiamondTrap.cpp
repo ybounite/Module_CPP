@@ -24,7 +24,7 @@ DiamondTrap::DiamondTrap( std::string name )
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 50;
 	this->_AttackDamage = 30;
-	std::cout << "DiamondTrap costructor called" << std::endl;
+	std::cout << "DiamondTrap " << this->_Name << " is created" << std::endl;
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap &Other )
