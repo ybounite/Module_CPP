@@ -12,6 +12,7 @@
 
 # include "../Include/FragTrap.hpp"
 
+
 FragTrap::FragTrap( void ) : ClapTrap() {
 
 	this->_HitPoints = 100;
@@ -25,7 +26,7 @@ FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 100;
 	this->_AttackDamage = 30;
-	std::cout << "FragTrap constructor called" << std::endl;
+	std::cout << "FragTrap " << getName() << " is created" << std::endl;
 }
 
 FragTrap::FragTrap( const FragTrap &Other ) : ClapTrap(Other) {
@@ -42,10 +43,11 @@ FragTrap	&FragTrap::operator=( const FragTrap &Other ) {
 
 FragTrap::~FragTrap( void ) {
 
-	std::cout << "FragTrap " << getName() << " is destroyed 💀" << std::endl;
+    std::cout << "FragTrap " << getName() << " is destroyed" << std::endl; 
 }
 
 void	FragTrap::highFivesGuys( void ) {
+
 	if(this->_EnergyPoints <= 0|| this->_HitPoints <= 0)
 		std::cout << "FragTrap " << this->_Name << " asks for a positive high-five" << std::endl;
 	else
