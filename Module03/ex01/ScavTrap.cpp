@@ -25,7 +25,7 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap( name ){
 	std::cout << "ScavTrap constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap( const ScavTrap &Other ) : ClapTrap( Other){
+ScavTrap::ScavTrap( const ScavTrap &Other ) : ClapTrap( Other ){
 
 	std::cout << "ScravTrap copy constructor called" << std::endl;
 }
@@ -42,7 +42,7 @@ ScavTrap	&ScavTrap::operator=( const ScavTrap &Other ) {
 
 ScavTrap::~ScavTrap( void ) {
 
-	std::cout << "ScavTrap destructor called" << std::endl;
+	std::cout << "ScavTrap " << getName() << " is destructor" << std::endl;
 }
 
 void		ScavTrap::guardGate( void ) {
