@@ -33,6 +33,16 @@ int	main(){
 
 	scav1.guardGate();
 
+	std::cout << "--- Copy Constructor Test ---" << std::endl;
+	ScavTrap scav3(scav1);
+	scav3.attack("Intruder");
+
+	std::cout << std::endl;
+
+	std::cout << "--- Assignment Operator Test ---" << std::endl;
+	scav3 = scav2;
+	scav3.attack("enemy");
+
 	std::cout << "----- End test ----"<< std::endl;
 	return 0;
 }
