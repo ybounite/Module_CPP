@@ -1,28 +1,31 @@
-NAME = 
+NAME = FRAGTRAP  
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-RM = rm -rf 
+RM = rm -rf
+
 
 SRC = main.cpp\
       ClapTrap.cpp\
-      FlagTrap.cpp
+      FragTrap.cpp
 
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
-all:$(NAME)
+all: $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CXX) $(FLAGS) - $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	$(CXX) $(FLAGS) -o $(NAME) $(OBJ)
 
-$(OBJ_DIR)%.o :%.cpp
-	$(CXX) $(FLAGS) - $< - $@
+$(OBJ_DIR)%.o:%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ_DIR)
 
-fclean:
+fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re : fclean all
+
