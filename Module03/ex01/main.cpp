@@ -19,7 +19,7 @@ int	main(){
 	ScavTrap scav1("root");
 	ScavTrap scav2("Mr.Robot");
 
-	std::cout << std::endl;
+	std::cout << "\n---- attack ---- " << std::endl;
 
 	scav1.attack("Mr.Robot");
 	scav2.takeDamage(20);
