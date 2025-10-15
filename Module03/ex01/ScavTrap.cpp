@@ -45,6 +45,23 @@ ScavTrap::~ScavTrap( void ) {
 	std::cout << "ScavTrap " << getName() << " is destructor" << std::endl;
 }
 
+void	ScavTrap::attack( const std::string& target ) {
+
+	std::cout << "ScavTrap " << getName();
+	if (this->_HitPoints <= 0) {
+		std::cout << " can't attack becouse it's destroyed!" << std::endl;
+		return ;
+	}
+	if (this->_EnergyPoints <= 0) {
+		std::cout << " hase no energy left to attack!" << std::endl;
+		return ;
+	}
+
+	std::cout << " attacks " + target + ", causing " << this->_AttackDamage
+		<< " points of damage!" << std::endl;
+	this->_EnergyPoints--;
+}
+
 void		ScavTrap::guardGate( void ) {
 
 	if(this->_EnergyPoints <= 0|| this->_HitPoints <= 0)
