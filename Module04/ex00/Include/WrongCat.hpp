@@ -30,4 +30,5 @@ public:
 	~WrongCat( void );
 
 	void	makeSound( void );
+
 };
