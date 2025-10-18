@@ -43,7 +43,8 @@ int main()
 
 	WAnimal->makeSound();
 	WCat->makeSound();
-
+	
+	std::cout << "---- WrongAnimal and WrongCat destructor called ----"<< std::endl;
 	delete WAnimal;
 	delete WCat;
 	return 0;
