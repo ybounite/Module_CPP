@@ -24,7 +24,6 @@ class Animal {
 public:
 
 	Animal( void );
-	Animal( std::string name );
 	Animal( const Animal &other );
 	Animal & operator=( const Animal &Other );
 	virtual ~Animal( void );
