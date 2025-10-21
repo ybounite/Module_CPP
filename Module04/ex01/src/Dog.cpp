@@ -13,18 +13,24 @@
 # include "../Include/Dog.hpp"
 
 Dog::Dog( void ) : _Brain( new Brain()){
+
 	setType("DOG");
 	this->_Brain->setIdeasIndex(100, this->_type);
-	std::cout << getType() << " constructors has been called\n";
+	std::cout << getType() << " constructors has been called" << std::endl;
 }
 
-Dog::Dog( const Dog &other ) : Animal( other ), _Brain( new Brain()){
-	*this->_Brain = *other._Brain;
+Dog::Dog( const Dog &other ) : Animal( other ), _Brain( new Brain(*other._Brain)){
+
 	std::cout << getType() << " copy constructor has been called" << std::endl;
 }
 
 Dog & Dog::operator=( const Dog &Other ) {
-	this->_type = Other._type;
+
+	if (this != &Other) {
+		*this->_Brain = *Other._Brain;
+		this->_type = Other._type;
+	}
+	std::cout << getType() << " copy assignment has been called" << std::endl;
 	return *this;
 }
 
