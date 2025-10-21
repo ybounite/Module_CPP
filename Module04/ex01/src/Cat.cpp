@@ -20,13 +20,17 @@ Cat::Cat( void ) : _Brain( new Brain()) {
 }
 
 Cat::Cat( const Cat &other ) : Animal( other ), _Brain( new Brain(*other._Brain)) {
+
 	std::cout << getType() << " copy constructor has been called" << std::endl;
 }
 
 Cat & Cat::operator=( const Cat &Other ) {
-	std::cout << getType() << " copy assignment has been called" << std::endl;
-	if (this != &Other)
+
+	if (this != &Other) {
 		this->_type = Other._type;
+		*this->_Brain = *Other._Brain;
+	}
+	std::cout << getType() << " copy assignment has been called" << std::endl;
 	return *this;
 }
 
