@@ -24,7 +24,12 @@ Dog::Dog( const Dog &other ) : Animal( other ), _Brain( new Brain()){
 }
 
 Dog & Dog::operator=( const Dog &Other ) {
-	this->_type = Other._type;
+
+	if (this != &Other) {
+		this->_type = Other._type;
+		*this->_Brain = *Other._Brain;
+	}
+	std::cout << getType() << " copy assignment has been called" << std::endl;
 	return *this;
 }
 
