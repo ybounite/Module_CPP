@@ -24,9 +24,12 @@ Cat::Cat( const Cat &other ) : Animal( other ), _Brain( new Brain(*other._Brain)
 }
 
 Cat & Cat::operator=( const Cat &Other ) {
-	std::cout << getType() << " copy assignment has been called" << std::endl;
-	if (this != &Other)
+
+	if (this != &Other) {
 		this->_type = Other._type;
+		*this->_Brain =  *Other._Brain;
+	}
+	std::cout << getType() << " copy assignment has been called" << std::endl;
 	return *this;
 }
 
