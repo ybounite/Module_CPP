@@ -15,42 +15,31 @@
 
 int main()
 {
-    // Polymorphism: Animal pointer to derived objects
-    Animal* animals[2];
-    animals[0] = new Cat();
-    animals[1] = new Dog();
+	Animal* animals[2];
+	animals[0] = new Cat();
+	animals[1] = new Dog();
 
-    for (int i = 0; i < 2; ++i) {
-        std::cout << animals[i]->getType() << " says: ";
-        animals[i]->makeSound();
-    }
+	for (int i = 0; i < 2; ++i) {
+		std::cout << animals[i]->getType() << " says : ";
+		animals[i]->makeSound();
+	}
 
-    Cat originalCat;
-    Cat copyCat(originalCat);    // copy constructor
-    Cat assignedCat;
-    assignedCat = originalCat;   // assignment operator
+	for (int i = 0; i < 2; ++i)
+		delete animals[i];
+	std::cout << "\n ==== test 2 ====" << std::endl;
+	
+	Animal *j = new Cat();
+	
+	std::cout << j->getType() << " says : ";
+	j->makeSound();
+	
+	Animal	*i = new Dog();
 
-    std::cout << "CopyCat says: ";
-    copyCat.makeSound();
+	std::cout << i->getType() << " says: ";
+	i->makeSound();
 
-    std::cout << "AssignedCat says: ";
-    assignedCat.makeSound();
-
-    Dog originalDog;
-    Dog copyDog(originalDog);
-    Dog assignedDog;
-    assignedDog = originalDog;
-
-    std::cout << "CopyDog says: ";
-    copyDog.makeSound();
-
-    std::cout << "AssignedDog says: ";
-    assignedDog.makeSound();
-
-    // Clean up
-    for (int i = 0; i < 2; ++i) {
-        delete animals[i];
-    }
-
+	std::cout << "\n--- destruct -----" << std::endl;
+	delete j;
+	delete i;
     return 0;
 }
