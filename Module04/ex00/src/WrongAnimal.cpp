@@ -13,16 +13,18 @@
 # include "../Include/WrongAnimal.hpp"
 
 
-WrongAnimal::WrongAnimal( void ) {
+WrongAnimal::WrongAnimal( void ) : _type("Default") {
 
+	std::cout << "WrongAnimal Default constructors has been called\n";
 }
 
-WrongAnimal::WrongAnimal( const WrongAnimal &other ){
+WrongAnimal::WrongAnimal( const WrongAnimal &other ) : _type(other._type) {
+
 	std::cout << "WrongAnimal copy constructor has been called" << std::endl;
-	this->_type = other._type;
 }
 
 WrongAnimal & WrongAnimal::operator=( const WrongAnimal &Other ) {
+
 	std::cout << "WrongAnimal copy assignment has been called" << std::endl;
 	if (this != &Other)
 		this->_type = Other._type;
@@ -39,5 +41,6 @@ const std::string	WrongAnimal::getType( void ) const { return _type; }
 void			WrongAnimal::setType( std::string type ) { _type = type; }
 
 void	WrongAnimal::makeSound( void ) {
+
 	std::cout << "No sound for Animal" << std::endl;
 }
