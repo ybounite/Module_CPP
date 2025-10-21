@@ -15,7 +15,7 @@
 Cat::Cat( void ) : Animal() {
 
 	this->setType("Cat");
-	std::cout << getType() << " constructors has been called\n";
+	std::cout <<  getType() << " Default constructors has been called\n";
 }
 
 Cat::Cat( const Cat &other ) : Animal( other ) {
