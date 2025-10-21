@@ -13,8 +13,9 @@
 # include "../Include/Dog.hpp"
 
 Dog::Dog( void ) {
+
 	setType("DOG");
-	std::cout << getType() << " constructors has been called\n";
+	std::cout << getType() << " Default constructors has been called\n";
 }
 
 Dog::Dog( const Dog &other ) : Animal( other ) {
@@ -22,6 +23,7 @@ Dog::Dog( const Dog &other ) : Animal( other ) {
 }
 
 Dog & Dog::operator=( const Dog &Other ) {
+
 	std::cout << getType() << " copy assignment has been called" << std::endl;
 	this->_type = Other._type;
 	return *this;
@@ -29,9 +31,11 @@ Dog & Dog::operator=( const Dog &Other ) {
 
 
 void	Dog::makeSound( void ) const {
+
 	std::cout << "Woof Woof Woof 🐕" << std::endl;
 }
 
 Dog::~Dog( void ) {
+
 	std::cout << getType() << " destructors has been called" << std::endl;
 }
