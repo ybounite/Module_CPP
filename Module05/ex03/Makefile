@@ -18,7 +18,8 @@ SRC = main.cpp \
       AForm.cpp\
       PresidentialPardonForm.cpp\
       RobotomyRequestForm.cpp\
-      ShrubberyCreationForm.cpp
+      ShrubberyCreationForm.cpp\
+      Intern.cpp
 
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
