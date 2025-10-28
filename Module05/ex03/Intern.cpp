@@ -53,13 +53,10 @@ AForm	*Intern::makeForm(const std::string &FormName, const std::string &target){
 		this->Forms[2] = new ShrubberyCreationForm(target);
 	for (short idex = 0; idex < 3; idex++) {
 		if (FormName == AllFormsNames[idex]) {
-			std::cout << "\nIntern create " << FormName << std::endl;
+			std::cout << GREEN << "\nIntern create " << FormName << RESET << std::endl;
 			return Forms[idex];
 		}
 	}
-
-
-
-	std::cout << "\nIntern couldn’t create form: " << FormName << std::endl;
+	std::cout << RED << "\nIntern couldn’t create form: " << FormName << RESET << std::endl;
 	return NULL;
 }
