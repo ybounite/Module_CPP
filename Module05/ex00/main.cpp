@@ -16,15 +16,20 @@
 int	main() {
 	try {
 		Bureaucrat	bureacrate1("Mr.Robot", 1);
-		Bureaucrat	bureacrate2("ba9ba9", 150);
-		
+
 		std::cout << bureacrate1 << std::endl;
-		std::cout << bureacrate2 << std::endl;
-		bureacrate2.decrementGrade();
 		bureacrate1.incrementGrade();
 	}
-	catch(std::exception &e)
-	{
+	catch(std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat	bureacrate2("ba9ba9", 150);
+		
+		std::cout << bureacrate2 << std::endl;
+		bureacrate2.decrementGrade();
+	}
+	catch(std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	return 0;
