@@ -2,7 +2,7 @@
 ## Type Casting - C++ 
 
 
-*** Implicit conversion ***
+***Implicit conversion ***
 
 ```
 # include <iostream>
