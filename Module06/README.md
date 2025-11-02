@@ -47,7 +47,7 @@ int main() {
     A a1 = 10; // Implicit conversion using A::A(int)
     return 0;
 }
-
+```
                               ### 🔹 Explicit Conversion
 
 Explicit conversions (also known as *type casting*) are conversions that you, as the programmer, explicitly define using a casting operator. These conversions are necessary when implicit conversion isn't allowed, or if it could result in an unintended outcome (like data loss or unexpected behavior).
@@ -101,3 +101,4 @@ int main() {
     delete a;  // Clean up memory
     return 0;
 }
+```
