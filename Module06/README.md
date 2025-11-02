@@ -47,3 +47,57 @@ int main() {
     A a1 = 10; // Implicit conversion using A::A(int)
     return 0;
 }
+
+    ## 🔹 Explicit Conversion
+
+Explicit conversions (also known as *type casting*) are conversions that you, as the programmer, explicitly define using a casting operator. These conversions are necessary when implicit conversion isn't allowed, or if it could result in an unintended outcome (like data loss or unexpected behavior).
+
+In C++, explicit casting can be done using:
+
+- **C-like Cast Notation**: `(type)value`
+- **Functional Cast Notation**: `type(value)`
+  
+Alternatively, in modern C++ you can use the **C++ casting operators** such as `static_cast<>`, `dynamic_cast<>`, `reinterpret_cast<>`, and `const_cast<>` for safer, more readable, and clearer type conversions.
+
+### Example: C++ Explicit Type Casting
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// Type Casting - C++: Explicit Conversion
+struct A {
+    int _v;
+    A(int v) { _v = v; }
+};
+
+struct B {
+    int _v;
+    B(int v) { _v = v; }
+};
+
+int main() {
+    short k = 1;
+    int l;
+
+    // C-like cast notation: explicit cast from short to int
+    l = (int) k;   // C-like cast notation
+    cout << "After C-like cast, l = " << l << endl;
+
+    // Functional cast notation: explicit cast from short to int
+    l = int(k);    // Functional cast notation
+    cout << "After Functional cast, l = " << l << endl;
+
+    A *a = new A(5);  // Create an object of type A
+
+    // Pointer casting: converting from A* to B* (unsafe and not recommended)
+    /*
+        The following line would typically cause a runtime error because A and B are
+        not related classes. Forcefully casting pointers is dangerous:
+    */
+    B *b = (B*)a;  // Explicit cast from A* to B* (unsafe)
+    cout << "After pointer cast, b->_v = " << b->_v << endl;
+
+    delete a;  // Clean up memory
+    return 0;
+}
