@@ -47,7 +47,7 @@ int main() {
     cout << "e = " << e << ", f = " << f << endl;
 }
 ```
-** Explice convesion
+***Explice convesion***
 ```
 test
 
