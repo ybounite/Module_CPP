@@ -46,8 +46,45 @@ int main() {
     cout << "e = " << e << ", f = " << f << endl;
 }
 ```
+
 ***Explice convesion***
+        Many conversion specially those thaat imply a differant interpreatation of the value,
+    require an explicit conversion.
+    *Explicit type conversion: ```Functional``` and ```c-like castinf```
 ```
-test
+
+# include <iostream>
+using namespace std;
+
+// Type Casting - C++ : Explicit conversion
+struct A {
+    int _v;
+
+    A(int v){ _v = v; }
+};
+
+struct B
+{
+    int _v;
+
+    B(int v){ _v = v; }
+};
+
+int main() {
+    short k = 1;
+    int l;
+
+    l = (int) k; // c-lik cast notation
+    l = int (k); // Function notation
+
+    A *a = new A(5);
+
+    // b *b = a; // cannot convert 'A*' to 'B*' in initialization
+    /* Traditional explicit type-casting allows to convert any ponter into any other pointer type,
+        independently of the types they point to. The subsequent call to member will produce either a run-time error oer a unexpected result.
+    */
+    B *b = (B*)a;
+    cout << b->_v << endl;
+}
 
 ```
