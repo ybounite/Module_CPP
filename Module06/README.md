@@ -48,7 +48,7 @@ int main() {
     return 0;
 }
 ```
-                              ### 🔹 Explicit Conversion
+## 🔹 Explicit Conversion
 
 Explicit conversions (also known as *type casting*) are conversions that you, as the programmer, explicitly define using a casting operator. These conversions are necessary when implicit conversion isn't allowed, or if it could result in an unintended outcome (like data loss or unexpected behavior).
 
