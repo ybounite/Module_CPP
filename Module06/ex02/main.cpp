@@ -16,5 +16,8 @@ int	main() {
 	srand((unsigned)time(NULL));
 	Base	*base = generate();
 	identify(*base);
+	A	a;
+	identify(a);
+	delete base;
 	return 0;
 }
