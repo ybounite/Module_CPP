@@ -29,11 +29,6 @@ ScalarConverter::~ScalarConverter( void ) {
 	
 }
 
-bool	is_inf(const std::string &literal) {
-	return (literal == "+inf" || literal == "-intf"
-		|| literal == "+inff" || literal == "-inff");
-}
-
 void	ScalarConverter::convert( std::string literal ) {
 
 	char	*end = NULL;
@@ -60,9 +55,11 @@ void	ScalarConverter::convert( std::string literal ) {
 		if (literal[literal.length() -1] == 'f')
 			literal.erase(literal.length() - 1);
 		value = strtod(literal.c_str(), &end);
-		std::cout << "number : " << value << "\nstring : " << end << std::endl;
-		if (end[0] != '\0') {
-			std::cerr << "Error: invalid literal" << std::endl;
+		if (end[0] != '\0' || literal[literal.length() - 1] == '.' || literal[0] == '.') {
+			convertToChar(value, true);
+			convertToInt(value, true);
+			convertToFloat(value, true);
+			convertToDouble(value, true);
 			return ;
 		}
 	}
@@ -73,33 +70,41 @@ void	ScalarConverter::convert( std::string literal ) {
 
 }
 
-void	ScalarConverter::convertToInt( const double value ) {
+void	ScalarConverter::convertToInt( const double value, bool	isImpossible) {
 	std::cout << "int  : ";
-	if (std::isnan(value) || value > INT_MAX || value < INT_MIN)
+	if (std::isnan(value) || value > INT_MAX || value < INT_MIN || isImpossible)
 		std::cout << "impossible";
 	else
 		std::cout << static_cast<int>(value);
 	std::cout << std::endl;
 }
 
-void	ScalarConverter::convertToChar( const double value ) {
+void	ScalarConverter::convertToChar( const double value, bool isImpossible) {
 
 	std::cout << "char : ";
-	if (std::isnan(value) || value < 0 || value > 127)
+	if (std::isnan(value) || value < 0 || value > 127 || isImpossible)
 		std::cout << "impossible";
 	else if (std::isprint(static_cast<char>(value)))
-		std::cout << static_cast<char>(value) << std::endl;
+		std::cout << static_cast<char>(value);
 	else
 		std::cout << "Non displayable";
 
 	std::cout << std::endl;
 }
 	
-void	ScalarConverter::convertToDouble( const double value ) {
-	std::cout << "double : " << static_cast<double>(value) << std::endl;
+void	ScalarConverter::convertToDouble( const double value, bool isImpossible) {
+
+	if (isImpossible)
+		std::cout << "double : impossible" << std::endl;
+	else
+		std::cout << "double : " << static_cast<double>(value) << std::endl;
 
 }
-void	ScalarConverter::convertToFloat( const double value ) {
-	std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << std::endl;
+void	ScalarConverter::convertToFloat( const double value, bool isImpossible) {
+
+	if (isImpossible)
+		std::cout << "float : impossible" << std::endl;
+	else
+		std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << std::endl;
 
 }
