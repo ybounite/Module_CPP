@@ -15,11 +15,18 @@
 # include <iostream>
 # include <string>
 
-template<typename T>
-void	printElement(const T &element) { std::cout << element << " "; }
 
-template<typename T, typename F>
-void	iter(T *array, const size_t length, F funct) {
-	for (size_t i = 0; i < length; i++)
-		funct(array[i]);
+template<typename T>
+void	printElement(const T &element) { std::cout << element << std::endl; }
+
+template<typename T>
+void	iter(T *array, const int &length, void	(*ptrFunct)(const T&)) {
+	for (int i = 0; i < length; i++)
+		ptrFunct(array[i]);
+}
+
+template<typename T>
+void	iter(T *array, const int &length, void	(*ptrFunct)(T&)) {
+	for (int i = 0; i < length; i++)
+		ptrFunct(array[i]);
 }
