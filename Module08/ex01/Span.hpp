@@ -28,6 +28,7 @@ public:
 	void	addNumber( int N );
 	int	shortestSpan( void );
 	int	longestSpan( void );
+
 private:
 	unsigned int			_maxSize;
 	std::vector<int>		_vNumber;
