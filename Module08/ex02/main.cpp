@@ -30,9 +30,17 @@ int main()
 		std::cout << *it << std::endl;
 		++it;
 	}
+	mstack.push(1000);
+	MutantStack<int>::const_iterator const_it = mstack.begin();
+	MutantStack<int>::const_iterator const_ite = mstack.end();
+	std::cout << "print const iterator "<< std::endl;
+	while (const_it != const_ite){
+		std::cout << *const_it << " ";
+		++const_it;
+	}
 	std::stack<int> s(mstack);
 	s.push(100);
-	std::cout << "all element of this stack\n";
+	std::cout << "\nall element of this stack\n";
 	while (!s.empty()){
 		std::cout << s.top() << std::endl;
 		s.pop();
