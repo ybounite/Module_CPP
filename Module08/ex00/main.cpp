@@ -13,6 +13,7 @@
 # include "easyfind.hpp"
 
 int	main() {
+
 	std::cout << "Declaring a Vector " << std::endl;
 	std::vector<int> vArray;
 	for (short i = 1; i <= 5; i++)
