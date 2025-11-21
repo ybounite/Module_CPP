@@ -8,7 +8,8 @@ RED		=	\033[31m
 UP		=	\033[A
 CUT		=	\033[K
 
-SRC = main.cpp
+SRC = main.cpp\
+      BitcoinExchange.cpp
 
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
