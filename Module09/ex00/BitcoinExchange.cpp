@@ -11,18 +11,30 @@
 BitcoinExchange::BitcoinExchange( void ) {
 }
 
-BitcoinExchange::BitcoinExchange( const  BitcoinExchange &Other ) : _DataBase("data.csv") {
-	(void)Other;
+BitcoinExchange::BitcoinExchange( const  BitcoinExchange &Other )  {
+	*this = Other;
+
 }
 
-bool    isLeapYear(short year) {
+BitcoinExchange & BitcoinExchange::operator=( const  BitcoinExchange &Other ) {
+	if (this != &Other) {
+		this->_records = Other._records;
+		this->_Data = Other._Data;
+	}
+	return *this;
+}
+
+BitcoinExchange::~BitcoinExchange( void ) {
+}
+
+bool	BitcoinExchange::isLeapYear(short year) {
     return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0);
 }
 
-bool	isValudeMonth(short Month) {
+bool	BitcoinExchange::isValudeMonth(short Month) {
 	return (Month > 0 && Month < 13);
 }
-short   NumberOfDaysInMonth(short Month, short Year) {
+short BitcoinExchange::NumberOfDaysInMonth(short Month, short Year) {
 
 	if (!isValudeMonth(Month)) return 0;
 	short NumberOfDays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -30,11 +42,8 @@ short   NumberOfDaysInMonth(short Month, short Year) {
 	return (Month == 2) ? (isLeapYear(Year) ? 29 : 28) : NumberOfDays[Month - 1];
 }
 
-bool    IsValidateDate(short Days, short Month, short Year) {
+bool	BitcoinExchange::IsValidateDate(short Days, short Month, short Year) {
 	return !(Days <= 0 || NumberOfDaysInMonth(Month, Year) < Days);
-}
-
-BitcoinExchange::~BitcoinExchange( void ) {
 }
 
 std::map<std::string, double>	BitcoinExchange::ConvertLineToRecordData(const std::string &line) {
@@ -107,7 +116,7 @@ void	BitcoinExchange::LoadDataFromFileInput( std::string FileName ) {
 			if (Line.empty()) continue ;
 			std::map<std::string, double> temp = ConvertLineToRecordInput(Line);
 			std::map<std::string, double>::iterator it = _records.lower_bound(temp.begin()->first);
-			std::cout << "temp first: " << temp.begin()->first <<" | temp Second: " << temp.begin()->second << std::endl;
+			//std::cout << "temp first: " << temp.begin()->first <<" | temp Second: " << temp.begin()->second << std::endl;
 			if (it->first != temp.begin()->first) {
 				if (it == temp.begin()) {
 					std::cerr << "Error: no earlier date found for " << temp.begin()->first << std::endl;
@@ -115,7 +124,6 @@ void	BitcoinExchange::LoadDataFromFileInput( std::string FileName ) {
 				}
 				it--;
 			}
-			//std::cout << it->first << std::endl;
 			double result = temp.begin()->second * it->second;
 			std::cout << temp.begin()->first << " => " << temp.begin()->second << " = " << result << std::endl;
 		}
@@ -145,8 +153,8 @@ void	BitcoinExchange::LoadDataFromFileDataBase(std::string FileName)
 	}
 	file.close();
 }
+
 void	BitcoinExchange::SumelationBitcionExchange(std::string InputFile) {
 	LoadDataFromFileDataBase("data.csv");
-	//(void)InputFile;
 	LoadDataFromFileInput(InputFile);
 }
