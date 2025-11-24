@@ -16,7 +16,8 @@ int	main(int argc, char **argv) {
 	try {
 		BitcoinExchange Bit;
 		std::string	fileName = argv[1];
-		Bit.LoadDataFromFile(fileName);
+		Bit.SumelationBitcionExchange(fileName);
+		//Bit.LoadDataFromFile(fileName);
 	}
 	catch (std::exception &e) {
 		std::cerr << "Error: " << e.what() << std::endl;
