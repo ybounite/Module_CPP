@@ -8,6 +8,10 @@ RED		=	\033[31m
 UP		=	\033[A
 CUT		=	\033[K
 
+CXX = c++
+FLAGS = -Wall -Wextra -Werror -std=c++98 
+RM = rm -rf
+
 SRC = main.cpp\
       BitcoinExchange.cpp
 
