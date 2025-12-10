@@ -16,7 +16,8 @@ PmergeMe::PmergeMe( const  PmergeMe &Other ) {
 
 PmergeMe &PmergeMe::operator=( const PmergeMe &Other ) {
 	if (this != &Other) {
-		this->_StoredData = Other._StoredData;
+		this->_vectorData = Other._vectorData;
+		this->_dequeData = Other._dequeData;
 	}
 	return *this;
 }
@@ -35,7 +36,7 @@ bool	PmergeMe::IsDigit( std::string &str) {
 
 void	PmergeMe::PrintBefor(){
 	std::cout << "Before : ";
-	for (_it it; it != _StoredData.end(); it++)
+	for (_it it = _vectorData.begin(); it != _vectorData.end(); it++)
 		std::cout << *it << " " ;
 	std::endl(std::cout);
 }
@@ -52,42 +53,50 @@ void	printVector(std::vector<int>vec) {
 void	PmergeMe::PrintAfter( void ) {
 
 	std::cout << "After : ";
-	for (_it it; it != _StoredData.end(); it++)
+	for (_it it = _vectorData.begin(); it != _vectorData.end(); it++)
 		std::cout << *it << " " ;
 	std::endl(std::cout);
 }
-/*
- * Level 1
- * [(2,7) | (1,3) | (8,20) | (0,14) 88]
- * Level 2
- * [(1,3)(2,7) | (0,14)(8,20) 88]
- * */
 
-void	PairingPhase( std::vector<int> &vec, int Pair_Level ) {
-	int		pair_units_nbr = vec.size() / Pair_Level;
-	int		jumb = Pair_Level * 2;
-	bool	is_odd = (pair_units_nbr % 2 == 1); // is odd number
-
-	if (pair_units_nbr < 2) return ; // neded one two pairs 
-	_it		Start = vec.begin() ;
-	_it 	Last = next(Start, (Pair_Level * pair_units_nbr) - 1);
-	_it		End = next(Last, -(is_odd * Pair_Level)); // Pair_level is 1
-
-	for (_it i = Start; i < End; std::advance(i, jumb)) {
-		_it		StartBlock = next(i, Pair_Level - 1); // 7 
-		_it		LastBlock = next(i, (Pair_Level * 2) - 1);
-		if (_cmop(StartBlock, LastBlock))
-			std::cout << "yeas " << *StartBlock <<" gred theen : " << *LastBlock << std::endl;
+size_t	GeneratJacobsthalNumber(size_t k) {
+	if (k == 0) return 0;
+	if (k == 1) return 1;
+	size_t prev2 = 0, prev1 = 1;
+	for (size_t i = 2; i <= k; i++) {
+		size_t result = prev1 + 2 * prev2;
+		prev2 = prev1;
+		prev1 = result;
 	}
-	
+	return prev1;
 }
 
-void	PmergeMe::sort( std::vector<int> &vec ) {
-	if (vec.size() == 1) {
-		PrintBefor();
+void	PrintStatusContainer( std::vector<int> &Container, clock_t duration ){
+	std::cout.precision(6);
+	double seconds = (double)duration / CLOCKS_PER_SEC;
+	double microseconds = seconds * 1000000;  // Convert seconds to microseconds
+	std::cout << "Time to process a range of " << Container.size() <<" elements with std::[..] : " << std::fixed << microseconds << " us" << std::endl;
+}
+
+void	PmergeMe::sort( void ) {
+
+	if (_vectorData.size() == 1) {
+		//PrintVectorBefor();
 		return ;
 	}
-	PairingPhase(vec, 1);
+	// print vector a
+	// used vecoter
+	clock_t startTimeVector, endTimeVector;
+	startTimeVector = clock();
+	PairingPhase(_vectorData, 1);
+	endTimeVector = clock() - startTimeVector;
+	PrintAfter();
+	PrintStatusContainer(_vectorData, endTimeVector);
+	// used deque 
+	clock_t	startTimeDeque, endTimeDeque;
+	startTimeDeque	= clock();
+	PairingPhase(_dequeData, 1);
+	endTimeDeque = clock() - startTimeDeque;
+	PrintStatusContainer(_dequeData, endTimeDeque);
 }
 
 void	PmergeMe::hanleArgument( char **const arv) {
@@ -102,7 +111,6 @@ void	PmergeMe::hanleArgument( char **const arv) {
 				throw std::invalid_argument("Argument is Empty");
 			if (std::string("0123456789+-").find(token[0]) == std::string::npos)
         			throw std::invalid_argument("Arguments is invalid");
-			// # problem in -a
 			if (token[0] == '-') 
 				throw std::invalid_argument("Argument Is Negative");
 			if (!IsDigit(token))
@@ -110,12 +118,21 @@ void	PmergeMe::hanleArgument( char **const arv) {
 			std::pair<std::set<int>::iterator, bool> check = set_.insert(std::atoi(token.c_str()));
 		        if (check.second == false)
                 		throw std::invalid_argument("Some Duplicate Found");
-			//std::cout << "string : " << token << std::endl;
-			//std::cout << "stringstream : " + ss.str() << std::endl;
-			this->_StoredData.push_back(std::atoi(token.c_str()));
+			this->_vectorData.push_back(std::atoi(token.c_str()));
+			this->_dequeData.push_back(std::atoi(token.c_str()));
 		}
-		//std::cout << ss.str() << std::endl;
 	}
-	sort(this->_StoredData);
+	PrintBefor();
+	sort();
+	bool sorted = true;
+	for (size_t i = 1; i < _vectorData.size(); i++) {
+		if (_vectorData[i] < _vectorData[i-1]) {
+			sorted = false;
+			break;
+		}
+	}
+
+	std::cout << "\nVerification: " << (sorted ? "✓ CORRECTLY SORTED" : "✗ NOT SORTED") << std::endl;
+	std::cout << "Total comparisons made: " << check << std::endl;
 }
 
