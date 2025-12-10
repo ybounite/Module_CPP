@@ -8,6 +8,8 @@
 
 # include "PmergeMe.hpp"
 
+int	check = 0;
+
 int	main(int arc, char **arv) {
 
 	if (arc == 1) {
