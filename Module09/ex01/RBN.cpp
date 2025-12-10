@@ -28,16 +28,16 @@ bool	RBN::IsValidNumber(const std::string& str) {
 	size_t	i = 0;
 	int	number = 0;
 
-	if (str[0] == '-') {
+	if (str[0] == '-' ) {
 		if (str.size() == 1) return false;
 		i = 1;
 	}
 
 	for (; i < str.size(); ++i)
-		if (!std::isdigit(str[i])) return false;
-
+	if (!std::isdigit(str[i])) return false;
+	
 	number = std::atoi(str.c_str());
-	if (number > 10) return false;
+	if (number > 9) return false;
 
 	return true;
 }
@@ -61,7 +61,7 @@ int	ApplyOperator(int a, int b, char c) {
 		return a * b;
 	case '/':
 		if (b == 0)
-                	throw std::runtime_error("Error: division by zero");
+        	throw std::runtime_error("Error: division by zero");
 		return a / b;
 	}
 	return Resulte;
@@ -74,21 +74,20 @@ int	RBN::ExecuteRPN(const std::string& input) {
 	while (ss >> token) {
 
 		if (IsValidNumber(token))
-		    _Records.push(std::atoi(token.c_str()));
-
+			_Records.push(std::atoi(token.c_str()));
 		else if (IsValidOperator(token)) {
 
-		    if (_Records.size() < 2)
-			throw std::runtime_error("Error: insufficient values");
+			if (_Records.size() < 2)
+				throw std::runtime_error("Error: insufficient values");
 
-		    int b = _Records.top(); _Records.pop();
-		    int a = _Records.top(); _Records.pop();
+			int b = _Records.top(); _Records.pop();
+			int a = _Records.top(); _Records.pop();
 
-		    int result = ApplyOperator(a, b, token[0]);
-		    _Records.push(result);
+			int result = ApplyOperator(a, b, token[0]);
+			_Records.push(result);
 		}
 		else
-		    throw std::runtime_error("Error: invalid token");
+			throw std::runtime_error("Error: invalid token '" +token+ "'");
 	}
 
 	if (_Records.size() != 1)
