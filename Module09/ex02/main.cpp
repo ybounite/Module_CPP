@@ -13,7 +13,7 @@ int	check = 0;
 int	main(int arc, char **arv) {
 
 	if (arc == 1) {
-        	std::cerr << "Please Enter Some Arguments So I Have Something To Do";
+		std::cerr << "Please Enter Some Arguments So I Have Something To Do";
 		std::endl(std::cerr);
 		return 1;
 	}
