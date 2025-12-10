@@ -70,6 +70,7 @@ void    BitcoinExchange::StringToDate(std::string Str) {
 	Month = std::atoi(Str.substr(5, 2).c_str());
 	Days = std::atoi(Str.substr(8).c_str());
 	if (!IsValidateDate(Days, Month, Year)) throw std::runtime_error("Error: bad input => " + Str);
+	if (Year < 2009) throw std::runtime_error("Error: date too early. " + Str);
 }
 
 std::map<std::string, double>	BitcoinExchange::ConvertLineToRecordInput(const std::string &line){
@@ -109,8 +110,10 @@ void	BitcoinExchange::LoadDataFromFileInput( std::string FileName ) {
 	}
 	
 	std::getline(File, Line);
-	if (Line.empty()) throw std::runtime_error("Input File Is Empty");	
-	if (Line == "date | value\n") throw std::invalid_argument("Something Missing or False About The Input File");
+	if (Line.empty())
+		throw std::runtime_error("Input File Is Empty");	
+	if (Line != "date | value")
+		throw std::runtime_error("Something Missing or False About The Input File");
 	while (std::getline(File, Line)) {
 		try {
 			if (Line.empty()) continue ;
