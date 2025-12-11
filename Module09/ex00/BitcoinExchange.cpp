@@ -70,7 +70,6 @@ void    BitcoinExchange::StringToDate(std::string Str) {
 	Month = std::atoi(Str.substr(5, 2).c_str());
 	Days = std::atoi(Str.substr(8).c_str());
 	if (!IsValidateDate(Days, Month, Year)) throw std::runtime_error("Error: bad input => " + Str);
-	if (Year < 2009) throw std::runtime_error("Error: date too early. " + Str);
 }
 
 std::map<std::string, double>	BitcoinExchange::ConvertLineToRecordInput(const std::string &line){
@@ -119,9 +118,8 @@ void	BitcoinExchange::LoadDataFromFileInput( std::string FileName ) {
 			if (Line.empty()) continue ;
 			std::map<std::string, double> temp = ConvertLineToRecordInput(Line);
 			std::map<std::string, double>::iterator it = _records.lower_bound(temp.begin()->first);
-			//std::cout << "temp first: " << temp.begin()->first <<" | temp Second: " << temp.begin()->second << std::endl;
 			if (it->first != temp.begin()->first) {
-				if (it == temp.begin()) {
+				if (it == _records.begin()) {
 					std::cerr << "Error: no earlier date found for " << temp.begin()->first << std::endl;
 					continue ;
 				}
@@ -147,7 +145,9 @@ void	BitcoinExchange::LoadDataFromFileDataBase(std::string FileName)
 		std::string errorMessage = "Error: could not open file: " + FileName;
 		throw std::runtime_error(errorMessage);
 	}
-
+	std::getline(file, line);
+	if (line != "date,exchange_rate")
+		throw std::runtime_error("invalide first line date,exchange_rate");
 	while (std::getline(file, line)) {
 		if (line.empty()) continue;
 	
